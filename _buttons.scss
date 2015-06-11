@@ -1,0 +1,39 @@
+// Create a button
+//
+// Usage
+// @include btn( color value );
+// 
+// You can set one or two color values, more than two values will not work since the mixin is forcing the use of only two colors
+
+@mixin btn( $color... ) {
+
+    /* Normalize */
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    border:0;
+    padding: 7px 25px;
+
+    //Set font color based on background color
+    @if ( lightness( nth( $color, 1 ) ) > 50 ) {
+        color: darken( nth( $color, 1 ), 50% );
+    } @else {
+        color: lighten( nth( $color, 1 ), 50% );
+    }
+    
+    //Set background color
+    @if length( $color ) >= 2 {
+        background: linear-gradient( $color ); 
+    } @else {
+        background-color: nth( $color, 1 ); 
+    }
+
+    //Sets the hover state based on colors used
+    &:hover {
+        @if length( $color ) >= 2 {
+            background: linear-gradient( lighten( nth( $color , 1 ), 20% ), lighten( nth( $color , 2), 20% ) );
+        } @else {
+            background-color: lighten( nth( $color , 1 ), 20% ); 
+        }
+    }
+}
