@@ -5,4 +5,4 @@ This is a simple mixin that creates a button for you. All you have to add is the
 
 ### Usage
 
-To use this mixin just add *@include btn( your color value)* to a button css element. 
+To use this mixin just add **@include btn( your color value)** to a button css element. 
